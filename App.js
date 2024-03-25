@@ -17,16 +17,23 @@ export default function App() {
   // obter permissão da minha localização
   useEffect(() => {
     async function obterLocalizacao() {
+      // Acessando o staus da requisição de permissão de uso dos recursos de egeolocalização
       const { status } = await Location.requestForegroundPermissionsAsync();
+
+      // Se o status não for liberado/permitido, então será dado um alerta notificando o usuario
       if (status !== "granted") {
         Alert.alert("Ops", "Você não autorizou o uso da geolocalizacao");
         return;
       }
+
+      // Se o status  estiver OK, obtemos os dados da localizacao atual. E atualizamos o state da minhaLocalizacao
       let localizacaoAtual = await Location.getCurrentPositionAsync({});
       setminhaLocalizacao(localizacaoAtual);
     }
     obterLocalizacao();
   }, []);
+
+  console.log(minhaLocalizacao);
 
   const [localizacao, setLocalizacao] = useState({
     latitude: -33.867886,
