@@ -36,12 +36,10 @@ export default function App() {
 
   console.log(minhaLocalizacao);
 
-  const [localizacao, setLocalizacao] = useState({
-    latitude: -33.867886,
-    longitude: -63.987,
-    latitudeDelta: 0.8,
-    longitudeDelta: 0.8,
-  });
+  // Este state tem a finalidade de determinar a posição/localização no MapView junto com o Marker
+  // Inicialmete é nulo pois o usuario ainda não acionou o botão da sua localização
+  const [localizacao, setLocalizacao] = useState(null);
+
   const regiaoInicialMapa = {
     latitude: -23.5489,
     longitude: -46.6388,
@@ -49,6 +47,7 @@ export default function App() {
     latitudeDelta: 0.8,
     longitudeDelta: 0.8,
   };
+
   const marcarLocal = (event) => {
     // console.log(event.nativeEvent);
     setLocalizacao({
