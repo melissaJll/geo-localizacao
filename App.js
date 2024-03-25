@@ -1,26 +1,40 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
-import MapView from "react-native-maps";
+import { Image, StatusBar, StyleSheet, View } from "react-native";
+
+// Importação da biblioteca de mapa e o sub-componente "Marker"
+import MapView, { Marker } from "react-native-maps";
 
 export default function App() {
   const regiaoInicialMapa = {
-    latitude: -23.533,
-    longitude: -46.65,
-    // Definição do zoom, Quanto menor mais próximo do mapa
-    latitudeDelta: 40,
-    longitudeDelta: 40,
+    // Brasil
+
+    latitude: -23.5489,
+    longitude: -46.6388,
+
+    latitudeDelta: 0.8,
+    longitudeDelta: 0.8,
   };
+
+  // Marker
+  const localizacao = {
+    latitude: -33.867886,
+    longitude: -63.987,
+    latitudeDelta: 0.8,
+    longitudeDelta: 0.8,
+  };
+
   return (
     <>
       <StatusBar />
       <View style={estilos.container}>
         <MapView
-          mapType="hybrid"
           style={estilos.mapa}
           initialRegion={regiaoInicialMapa}
-          maxZoomLevel={15}
-          minZoomLevel={5}
-          // userInterfaceStyle="light"
-        />
+          mapType="hybrid"
+        >
+          <Marker coordinate={localizacao} draggable>
+            <Image source={require("./assets/ghost.png")} />
+          </Marker>
+        </MapView>
       </View>
     </>
   );
