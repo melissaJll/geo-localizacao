@@ -3,8 +3,8 @@ import MapView from "react-native-maps";
 
 export default function App() {
   const regiaoInicialMapa = {
-    latitude: -10,
-    longitude: -55,
+    latitude: -23.533,
+    longitude: -46.65,
     // Definição do zoom, Quanto menor mais próximo do mapa
     latitudeDelta: 40,
     longitudeDelta: 40,
