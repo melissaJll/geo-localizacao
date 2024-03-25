@@ -13,7 +13,11 @@ export default function App() {
     <>
       <StatusBar />
       <View style={estilos.container}>
-        <MapView style={estilos.mapa} />
+        <MapView
+          mapType="standard"
+          style={estilos.mapa}
+          initialRegion={regiaoInicialMapa}
+        />
       </View>
     </>
   );
