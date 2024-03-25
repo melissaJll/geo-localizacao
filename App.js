@@ -3,6 +3,7 @@ import {
   Alert,
   Button,
   Image,
+  SafeAreaView,
   StatusBar,
   StyleSheet,
   View,
@@ -60,7 +61,7 @@ export default function App() {
   return (
     <>
       <StatusBar />
-      <View style={estilos.container}>
+      <SafeAreaView style={estilos.container}>
         <View style={estilos.viewBotao}>
           <Button onPress={marcarLocal} title="Onde estou?"></Button>
         </View>
@@ -71,7 +72,7 @@ export default function App() {
         >
           <Marker coordinate={localizacao} draggable />
         </MapView>
-      </View>
+      </SafeAreaView>
     </>
   );
 }
