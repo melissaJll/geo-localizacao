@@ -48,12 +48,16 @@ export default function App() {
     longitudeDelta: 0.8,
   };
 
-  const marcarLocal = (event) => {
+  const marcarLocal = () => {
     // console.log(event.nativeEvent);
     setLocalizacao({
-      ...localizacao,
-      latitude: event.nativeEvent.coordinate.latitude,
-      longitude: event.nativeEvent.coordinate.longitude,
+      // novos valores da geolocalizacao da posição do usuario
+      // Aqui é necessário aacessar a propriedade 'coords' do state minhaLocalizacao. Os
+      //  valores desta propriedade correspondem ao que o Location conseguiu obter à partir do GPS do aparelho
+      latitude: minhaLocalizacao.coords.latitude,
+      longitude: minhaLocalizacao.coords.longitude,
+      latitudeDelta: 0.02,
+      longitudeDelta: 0.01,
     });
   };
 
@@ -66,10 +70,11 @@ export default function App() {
         </View>
         <MapView
           style={estilos.mapa}
-          initialRegion={regiaoInicialMapa}
+          // region pode variar
+          region={localizacao ?? regiaoInicialMapa}
           mapType="hybrid"
         >
-          <Marker coordinate={localizacao} draggable />
+          {localizacao && <Marker coordinate={localizacao} />}
         </MapView>
       </SafeAreaView>
     </>
