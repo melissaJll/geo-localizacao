@@ -14,9 +14,12 @@ export default function App() {
       <StatusBar />
       <View style={estilos.container}>
         <MapView
-          mapType="standard"
+          mapType="hybrid"
           style={estilos.mapa}
           initialRegion={regiaoInicialMapa}
+          maxZoomLevel={15}
+          minZoomLevel={5}
+          // userInterfaceStyle="light"
         />
       </View>
     </>
